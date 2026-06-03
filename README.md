@@ -457,7 +457,7 @@ Roboter <|-- Lieferroboter
 
 Hier soll das überarbeitete UML Diagramm zum Code in `robots_exercise` erstellt werden.
 
-ich möchte die einzelnen Klassen von CSV und JSON zusammenlegen und dann selber in der Klasse implementieren
+ich möchte die einzelnen Klassen von CSV und JSON zusammenlegen, um in Zukunft besser weitere Optionen einbetten zu können und dann selber in der Klasse implementieren. machts einfacher damit zu arbeiten.
 
 ```text @plantUML
 @startuml
@@ -476,7 +476,7 @@ class Lieferroboter {
 }
 interface ISerializer {
   + static abstract Laden(string): Roboter
-  + Speichern(string): void
+  + SpeichernGeneric(string): void
 }
 
 Roboter <|.. ISerializer
