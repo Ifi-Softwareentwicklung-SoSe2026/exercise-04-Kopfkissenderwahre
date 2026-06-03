@@ -439,7 +439,7 @@ class Lieferroboter {
   + Name: string
   + Energielevel: int
   + Lieferkapazität: int
-  + override GetStatur(): string 
+  + override GetStatus(): string 
 }
 interface ISerializer {
   + SpeichernAlsJSON(string): void
@@ -448,9 +448,9 @@ interface ISerializer {
   + static abstract LadenAusCSV(string): Roboter
 }
 
-Roboter <|.. IServializer
+Roboter <|.. ISerializer
 
-Lieferroboter <|-- Robotor
+Lieferroboter <|-- Roboter
 
 @enduml
 ```
