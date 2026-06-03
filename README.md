@@ -468,7 +468,7 @@ class Roboter {
   + Name: string
   + Typ: string
   + Energielevel: int
-  + Speichern(string): void
+  + SpeichernGeneric(string): void
   + {static} Laden(string): Roboter
   + virtual GetStatus(): string
   + virtual Activate(): void
