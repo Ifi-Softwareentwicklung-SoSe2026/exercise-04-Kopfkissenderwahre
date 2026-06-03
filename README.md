@@ -457,6 +457,7 @@ Roboter <|-- Lieferroboter
 
 Hier soll das überarbeitete UML Diagramm zum Code in `robots_exercise` erstellt werden.
 
+ich möchte die einzelnen Klassen von CSV und JSON zusammenlegen und dann selber in der Klasse implementieren
 
 ```text @plantUML
 @startuml
