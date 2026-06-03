@@ -457,7 +457,7 @@ Roboter <|-- Lieferroboter
 
 Hier soll das überarbeitete UML Diagramm zum Code in `robots_exercise` erstellt werden.
 
-ich möchte die einzelnen Klassen von CSV und JSON zusammenlegen, um in Zukunft besser weitere Optionen einbetten zu können und dann selber in der Klasse implementieren. machts einfacher damit zu arbeiten.
+ich möchte die einzelnen Klassen von CSV und JSON zusammenlegen, um in Zukunft besser weitere Optionen einbetten zu können und dann selber in der Klasse implementieren. Das Zusammenlegen der LadenAusCSV und LadenAusJSON Methoden ermöglicht die zukunftssichere Weiterentwicklung von modernen Lösungen zu den Problemen von morgen. Des weiteren wird die Entwicklungsschnittstelle zum Nutzer um Maßstäbe einfacher und nutzbarer gemacht, die Abstraktion ermöglicht auf lange Sicht eine reibungslose Entwicklung, das Kopplungsproblem wird endgültig gelöst mit der strukturellen Vereinigung von JSON, CSV und zahlreichen weiteren Formaten - technik, neu definiert. 
 
 ```text @plantUML
 @startuml
