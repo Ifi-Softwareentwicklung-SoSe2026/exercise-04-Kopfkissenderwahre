@@ -460,8 +460,27 @@ Hier soll das überarbeitete UML Diagramm zum Code in `robots_exercise` erstellt
 
 ```text @plantUML
 @startuml
+class Roboter {
+  + Name: string
+  + Typ: string
+  + Energielevel: int
+  + Speichern(string): void
+  + {static} Laden(string): Roboter
+  + virtual GetStatus(): string
+  + virtual Activate(): void
+}
+class Lieferroboter {
+  + Lieferkapazität: int
+  + override GetStatus(): string 
+}
+interface ISerializer {
+  + static abstract Laden(string): Roboter
+  + Speichern(string): void
+}
 
-Arbeiten Sie hier !!!
+Roboter <|.. ISerializer
+
+Roboter <|-- Lieferroboter
 
 @enduml
 ```
