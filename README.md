@@ -428,16 +428,14 @@ class Roboter {
   + Typ: string
   + Energielevel: int
   + SpeichernAlsCSV(string): void
-  + static LadenAusCSV(string): Roboter
+  + {static} LadenAusCSV(string): Roboter
   + SpeichernAlsJSON(string): void
-  + static LadenAusJSON(string): Roboter
+  + {static} LadenAusJSON(string): Roboter
   + virtual GetStatus(): string
   + virtual Activate(): void
 }
 class Lieferroboter {
   + Lieferkapazität(): string
-  + Name: string
-  + Energielevel: int
   + Lieferkapazität: int
   + override GetStatus(): string 
 }
@@ -450,7 +448,7 @@ interface ISerializer {
 
 Roboter <|.. ISerializer
 
-Lieferroboter <|-- Roboter
+Roboter <|-- Lieferroboter
 
 @enduml
 ```
