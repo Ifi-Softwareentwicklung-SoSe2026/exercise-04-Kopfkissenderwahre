@@ -25,15 +25,16 @@ public class Roboter : ISerializer
 
     public void SpeichernGeneric(string dateipfad)
     {
-        
+        if (dateipfad.EndsWith(".json")) {
         var json = JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(dateipfad, json);
+        } else {
         
         string inhalt = this is Lieferroboter lieferroboter
             ? $"{Name},{Typ},{Energielevel},{lieferroboter.Lieferkapazität}"
             : $"{Name},{Typ},{Energielevel}";
         File.WriteAllText(dateipfad, inhalt);
-        
+        }
 
     }
 
