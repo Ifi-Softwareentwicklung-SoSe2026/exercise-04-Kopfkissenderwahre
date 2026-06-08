@@ -23,16 +23,28 @@ public class Roboter : ISerializer
     public string Typ { get; set; } // z. B. "Lieferroboter", "Schwimmroboter", etc.
     public int Energielevel { get; set; }
 
-    public void SpeichernAlsCSV(string dateipfad)
+    public void SpeichernGeneric(string dateipfad)
     {
+        if (dateipfad.EndsWith(".json")) {
+        var json = JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(dateipfad, json);
+        } else {
+        
         string inhalt = this is Lieferroboter lieferroboter
             ? $"{Name},{Typ},{Energielevel},{lieferroboter.Lieferkapazität}"
             : $"{Name},{Typ},{Energielevel}";
         File.WriteAllText(dateipfad, inhalt);
+        }
+
     }
 
-    public static Roboter LadenAusCSV(string dateipfad)
+    public static Roboter Laden(string dateipfad)
     {
+        if (dateipfad.EndsWith(".json")) {
+        string json = File.ReadAllText(dateipfad);
+        Roboter? roboter = JsonSerializer.Deserialize<Roboter>(json) ?? throw new InvalidDataException($"JSON-Datei konnte nicht gelesen werden: {dateipfad}");
+        return roboter;
+        } else {
         string[] zeilen = File.ReadAllLines(dateipfad);
         string[] werte = zeilen[0].Split(',');
 
@@ -52,19 +64,7 @@ public class Roboter : ISerializer
             Typ = typ,
             Energielevel = energielevel
         };
-    }
-
-    public void SpeichernAlsJSON(string dateipfad)
-    {
-        var json = JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
-        File.WriteAllText(dateipfad, json);
-    }
-
-    public static Roboter LadenAusJSON(string dateipfad)
-    {
-        string json = File.ReadAllText(dateipfad);
-        Roboter? roboter = JsonSerializer.Deserialize<Roboter>(json) ?? throw new InvalidDataException($"JSON-Datei konnte nicht gelesen werden: {dateipfad}");
-        return roboter;
+        }
     }
 
     public virtual string GetStatus()
