@@ -39,11 +39,11 @@ public class Roboter : ISerializer
 
     public static Roboter Laden(string dateipfad)
     {
-        
+        if (dateipfad.EndsWith(".json")) {
         string json = File.ReadAllText(dateipfad);
         Roboter? roboter = JsonSerializer.Deserialize<Roboter>(json) ?? throw new InvalidDataException($"JSON-Datei konnte nicht gelesen werden: {dateipfad}");
         return roboter;
-        
+        } else {
         string[] zeilen = File.ReadAllLines(dateipfad);
         string[] werte = zeilen[0].Split(',');
 
@@ -63,7 +63,7 @@ public class Roboter : ISerializer
             Typ = typ,
             Energielevel = energielevel
         };
-        
+        }
     }
 
     public virtual string GetStatus()
