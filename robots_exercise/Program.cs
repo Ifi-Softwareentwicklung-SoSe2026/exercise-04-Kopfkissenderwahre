@@ -85,8 +85,8 @@ class Program
             string csvPfad = Path.Combine(ordner, $"{basisname}.csv");
             string jsonPfad = Path.Combine(ordner, $"{basisname}.json");
 
-            einzelnerRoboter.SpeichernGeneric(csvPfad, CSV);
-            einzelnerRoboter.SpeichernGeneric(jsonPfad, JSON);
+            einzelnerRoboter.SpeichernGeneric(csvPfad);
+            einzelnerRoboter.SpeichernGeneric(jsonPfad);
             index++;
         }
     }

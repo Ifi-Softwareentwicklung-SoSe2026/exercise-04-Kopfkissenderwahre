@@ -25,25 +25,25 @@ public class Roboter : ISerializer
 
     public void SpeichernGeneric(string dateipfad)
     {
-        if (format == "JSON") {
+        
         var json = JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(dateipfad, json);
-        } else {
+        
         string inhalt = this is Lieferroboter lieferroboter
             ? $"{Name},{Typ},{Energielevel},{lieferroboter.Lieferkapazität}"
             : $"{Name},{Typ},{Energielevel}";
         File.WriteAllText(dateipfad, inhalt);
-        }
+        
 
     }
 
     public static Roboter Laden(string dateipfad)
     {
-        if (format == "JSON") {
+        
         string json = File.ReadAllText(dateipfad);
         Roboter? roboter = JsonSerializer.Deserialize<Roboter>(json) ?? throw new InvalidDataException($"JSON-Datei konnte nicht gelesen werden: {dateipfad}");
         return roboter;
-        } else {
+        
         string[] zeilen = File.ReadAllLines(dateipfad);
         string[] werte = zeilen[0].Split(',');
 
@@ -63,7 +63,7 @@ public class Roboter : ISerializer
             Typ = typ,
             Energielevel = energielevel
         };
-        }
+        
     }
 
     public virtual string GetStatus()
