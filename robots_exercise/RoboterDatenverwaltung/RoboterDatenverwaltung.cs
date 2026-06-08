@@ -23,7 +23,7 @@ public class Roboter : ISerializer
     public string Typ { get; set; } // z. B. "Lieferroboter", "Schwimmroboter", etc.
     public int Energielevel { get; set; }
 
-    public void SpeichernGeneric(string dateipfad, string format)
+    public void SpeichernGeneric(string dateipfad)
     {
         if (format == "JSON") {
         var json = JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
@@ -37,7 +37,7 @@ public class Roboter : ISerializer
 
     }
 
-    public static Roboter Laden(string dateipfad, string format)
+    public static Roboter Laden(string dateipfad)
     {
         if (format == "JSON") {
         string json = File.ReadAllText(dateipfad);

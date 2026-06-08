@@ -109,7 +109,7 @@ class Program
         return Directory
             .GetFiles(ordner, "*.csv")
             .OrderBy(datei => datei)
-            .Select(Roboter.Laden(JSON))
+            .Select(Roboter.Laden)
             .ToList();
     }
 
@@ -118,7 +118,7 @@ class Program
         return Directory
             .GetFiles(ordner, "*.json")
             .OrderBy(datei => datei)
-            .Select(Roboter.Laden(JSON))
+            .Select(Roboter.Laden)
             .ToList();
     }
 }
